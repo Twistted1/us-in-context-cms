@@ -1,12 +1,55 @@
-# React + Vite
+# Us In Context CMS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React-based Content Management System for "Us In Context" - independent UK economics media brand.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Track and manage 134+ content pieces across 7 social platforms
+- Progress tracking and task completion
+- Export functionality
+- Responsive design with Tailwind CSS
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 18
+- Vite
+- Tailwind CSS (via CDN)
+- Lucide React icons
+
+## Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## Content Structure
+
+- **X-Twitter**: 28 posts (4 weeks × 7 daily posts)
+- **Instagram**: 28 posts (4 weeks × 7 posts)  
+- **Facebook**: 28 posts (4 weeks × 7 posts)
+- **LinkedIn**: 12 posts (4 weeks × 3 weekly posts)
+- **Website**: 12 articles (4 weeks × 3 articles)
+- **YouTube**: 12 videos (4 weeks × 3 videos)
+- **TikTok**: 4 videos (1 per week)
+
+**Total: 134 content pieces**
+
+## Deployment
+
+Deploy the `dist/` folder to any static hosting service:
+- Netlify (drag & drop)
+- Vercel (connect GitHub)
+- Traditional hosting (upload dist/ contents)
+
+No backend needed - everything runs client-side with local state.

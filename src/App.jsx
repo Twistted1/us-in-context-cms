@@ -2,37 +2,17 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import UsInContextCMS from './components/UsInContextCMS';
-
-// A placeholder component for the new Overview page
-const Overview = () => {
-    // The date will be based on the user's computer time
-    const today = new Date().toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
-
-    return (
-        <div className="p-8">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 rounded-lg shadow-lg text-white">
-                <h1 className="text-4xl font-bold">Content Creation Dashboard</h1>
-                <p className="mt-2 text-blue-200">Track your projects, manage tasks, and stay on schedule.</p>
-                <p className="mt-4 text-sm font-mono bg-black bg-opacity-20 px-2 py-1 rounded w-fit">{today}</p>
-            </div>
-        </div>
-    );
-}
+import MasterDashboard from './components/MasterDashboard'; // We've added our new dashboard
 
 function App() {
   return (
     <Router>
       <div className="bg-gray-50 min-h-screen">
         <Navbar />
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="max-w-7xl mx-auto">
           <Routes>
             {/* Main Pages */}
-            <Route path="/" element={<Overview />} />
+            <Route path="/" element={<MasterDashboard />} /> {/* This now shows our new dashboard */}
             <Route path="/cms" element={<UsInContextCMS />} />
             
             {/* Placeholder Pages from Navbar */}
