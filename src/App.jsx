@@ -1,33 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import UsInContextCMS from './components/UsInContextCMS';
-import MasterDashboard from './components/MasterDashboard'; // We've added our new dashboard
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=1.0, user-scalable=yes" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pastebin.com - Not Found (#404)</title>
+</head>
+<body>
 
-function App() {
-  return (
-    <Router>
-      <div className="bg-gray-50 min-h-screen">
-        <Navbar />
-        <main className="max-w-7xl mx-auto">
-          <Routes>
-            {/* Main Pages */}
-            <Route path="/" element={<MasterDashboard />} /> {/* This now shows our new dashboard */}
-            <Route path="/cms" element={<UsInContextCMS />} />
-            
-            {/* Placeholder Pages from Navbar */}
-            <Route path="/projects" element={<div>Projects Page Coming Soon</div>} />
-            <Route path="/notes" element={<div>Notes Page Coming Soon</div>} />
-            <Route path="/calendar" element={<div>Calendar Page Coming Soon</div>} />
-            <Route path="/x-twitter" element={<div>X-Twitter Page Coming Soon</div>} />
-            <Route path="/instagram" element={<div>Instagram Page Coming Soon</div>} />
-            <Route path="/tiktok" element={<div>TikTok Page Coming Soon</div>} />
-            <Route path="/linkedin" element={<div>LinkedIn Page Coming Soon</div>} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
-  );
-}
 
-export default App;
+<h1>Not Found (#404)</h1>
+<p>This page is no longer available. It has either expired, been removed by its creator, or removed by one of the Pastebin staff.</p>
+
+</body>
+</html>
