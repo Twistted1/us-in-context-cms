@@ -1,0 +1,35 @@
+// Add integration with design tools
+const DesignToolIntegration = () => {
+  const [canvaDesigns, setCanvaDesigns] = useState([]);
+  const [selectedDesign, setSelectedDesign] = useState(null);
+  
+  const fetchCanvaDesigns = useCallback(async () => {
+    try {
+      const response = await fetch('/api/canva/designs');
+      const designs = await response.json();
+      setCanvaDesigns(designs);
+    } catch (error) {
+      console.error('Failed to fetch Canva designs:', error);
+    }
+  }, []);
+  
+  const openInCanva = useCallback((designId) => {
+    window.open(`https://www.canva.com/design/${designId}/edit`, '_blank');
+  }, []);
+  
+  return (
+    <div className="design-tool-integration">
+      <h3>Design Assets</h3>
+      <div className="designs-grid">
+        {canvaDesigns.map(design => (
+          <div key={design.id} className="design-card">
+            <img src={design.thumbnail} alt={design.title} />
+            <h4>{design.title}</h4>
+            <button onClick={() => openInCanva(design.id)}>Edit in Canva</button>
+            <button onClick={() => setSelectedDesign(design)}>Use for Content</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

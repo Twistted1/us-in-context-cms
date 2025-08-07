@@ -1,0 +1,54 @@
+// Add comprehensive analytics
+const AnalyticsDashboard = ({ completedTasks, strategies }) => {
+  const analytics = useMemo(() => {
+    const totalTasks = Object.values(strategies).reduce((acc, platform) => {
+      return acc + Object.keys(platform).length;
+    }, 0);
+    
+    const completionRate = (completedTasks.length / totalTasks) * 100;
+    
+    const platformStats = Object.entries(strategies).map(([platform, content]) => {
+      const platformTasks = Object.keys(content).length;
+      const platformCompleted = completedTasks.filter(t => t.includes(platform)).length;
+      
+      return {
+        platform,
+        total: platformTasks,
+        completed: platformCompleted,
+        rate: (platformCompleted / platformTasks) * 100
+      };
+    });
+    
+    return {
+      completionRate,
+      platformStats,
+      totalTasks,
+      completedTasks: completedTasks.length
+    };
+  }, [completedTasks, strategies]);
+  
+  return (
+    <div className="analytics-dashboard">
+      <h3>Performance Overview</h3>
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h4>Overall Completion</h4>
+          <div className="progress-bar">
+            <div style={{ width: `${analytics.completionRate}%` }} />
+          </div>
+          <span>{analytics.completionRate.toFixed(1)}%</span>
+        </div>
+        
+        {analytics.platformStats.map(stat => (
+          <div key={stat.platform} className="stat-card">
+            <h4>{stat.platform}</h4>
+            <div className="progress-bar">
+              <div style={{ width: `${stat.rate}%` }} />
+            </div>
+            <span>{stat.completed}/{stat.total} ({stat.rate.toFixed(1)}%)</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

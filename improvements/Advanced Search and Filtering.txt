@@ -1,0 +1,48 @@
+// Implement comprehensive search functionality
+const ContentSearch = ({ strategies }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState({
+    platform: 'all',
+    status: 'all',
+    week: 'all'
+  });
+  
+  const filteredContent = useMemo(() => {
+    return Object.entries(strategies).reduce((acc, [platform, content]) => {
+      if (filters.platform !== 'all' && platform !== filters.platform) return acc;
+      
+      const filtered = Object.entries(content).filter(([key, item]) => {
+        const matchesSearch = searchTerm === '' || 
+          JSON.stringify(item).toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesWeek = filters.week === 'all' || key.includes(filters.week);
+        return matchesSearch && matchesWeek;
+      });
+      
+      if (filtered.length > 0) {
+        acc[platform] = Object.fromEntries(filtered);
+      }
+      
+      return acc;
+    }, {});
+  }, [strategies, searchTerm, filters]);
+  
+  return (
+    <div className="content-search">
+      <input
+        type="text"
+        placeholder="Search content..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className="filters">
+        <select onChange={(e) => setFilters(f => ({ ...f, platform: e.target.value }))}>
+          <option value="all">All Platforms</option>
+          <option value="xtwitter">X-Twitter</option>
+          <option value="instagram">Instagram</option>
+          <option value="tiktok">TikTok</option>
+          <option value="linkedin">LinkedIn</option>
+        </select>
+      </div>
+    </div>
+  );
+};

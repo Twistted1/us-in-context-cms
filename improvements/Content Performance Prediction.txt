@@ -1,0 +1,49 @@
+// Add ML-based performance prediction
+const PerformancePredictor = ({ content, platform }) => {
+  const [prediction, setPrediction] = useState(null);
+  const [confidence, setConfidence] = useState(0);
+  
+  const predictPerformance = useCallback(async () => {
+    try {
+      const response = await fetch('/api/predict/performance', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content, platform })
+      });
+      
+      const data = await response.json();
+      setPrediction(data.prediction);
+      setConfidence(data.confidence);
+    } catch (error) {
+      console.error('Failed to predict performance:', error);
+    }
+  }, [content, platform]);
+  
+  return (
+    <div className="performance-predictor">
+      <h3>Performance Prediction</h3>
+      <button onClick={predictPerformance}>Predict Performance</button>
+      
+      {prediction && (
+        <div className="prediction-results">
+          <h4>Predicted Engagement</h4>
+          <div className="metrics">
+            <div className="metric">
+              <span>Likes</span>
+              <strong>{prediction.likes}</strong>
+            </div>
+            <div className="metric">
+              <span>Shares</span>
+              <strong>{prediction.shares}</strong>
+            </div>
+            <div className="metric">
+              <span>Comments</span>
+              <strong>{prediction.comments}</strong>
+            </div>
+          </div>
+          <p className="confidence">Confidence: {(confidence * 100).toFixed(1)}%</p>
+        </div>
+      )}
+    </div>
+  );
+};

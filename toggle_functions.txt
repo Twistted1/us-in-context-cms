@@ -1,0 +1,24 @@
+const toggleProjectsTask = useCallback((taskId) =
+  setCompletedProjectsTasks(prev =
+    const newCompleted = [...prev]; 
+    const index = newCompleted.indexOf(taskId); 
+    if (index > -1) { 
+      newCompleted.splice(index, 1); 
+    } else { 
+      newCompleted.push(taskId); 
+    } 
+    return newCompleted; 
+  }); 
+}, []); 
+ 
+const toggleNotesTask = useCallback((taskId) =
+  setCompletedNotesTasks(prev =
+    const newCompleted = [...prev]; 
+    const index = newCompleted.indexOf(taskId); 
+    if (index > -1) { 
+      newCompleted.splice(index, 1); 
+    } else { 
+      newCompleted.push(taskId); 
+    } 
+    return newCompleted; 
+  }); 

@@ -1,0 +1,44 @@
+// Add user roles and permissions
+const TeamManagement = () => {
+  const [team, setTeam] = useState([]);
+  const [invites, setInvites] = useState([]);
+  
+  const inviteUser = useCallback((email, role) => {
+    const invite = {
+      id: Date.now(),
+      email,
+      role,
+      status: 'pending',
+      invitedAt: new Date().toISOString()
+    };
+    setInvites(prev => [...prev, invite]);
+  }, []);
+  
+  return (
+    <div className="team-management">
+      <h3>Team Members</h3>
+      <div className="team-list">
+        {team.map(member => (
+          <div key={member.id} className="team-member">
+            <img src={member.avatar} alt={member.name} />
+            <div>
+              <h4>{member.name}</h4>
+              <p>{member.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div className="invite-section">
+        <h4>Invite Team Member</h4>
+        <input type="email" placeholder="Email address" />
+        <select>
+          <option value="viewer">Viewer</option>
+          <option value="editor">Editor</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button onClick={() => inviteUser(email, role)}>Send Invite</button>
+      </div>
+    </div>
+  );
+};

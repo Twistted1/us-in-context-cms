@@ -1,0 +1,43 @@
+// Add AI content assistance
+const AIContentAssistant = ({ platform, context }) => {
+  const [suggestions, setSuggestions] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
+  const generateSuggestions = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/ai/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ platform, context })
+      });
+      
+      const data = await response.json();
+      setSuggestions(data.suggestions);
+    } catch (error) {
+      console.error('Failed to generate suggestions:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [platform, context]);
+  
+  return (
+    <div className="ai-content-assistant">
+      <h3>AI Content Assistant</h3>
+      <button onClick={generateSuggestions} disabled={loading}>
+        {loading ? 'Generating...' : 'Generate Suggestions'}
+      </button>
+      
+      <div className="suggestions-list">
+        {suggestions.map((suggestion, index) => (
+          <div key={index} className="suggestion">
+            <p>{suggestion.text}</p>
+            <button onClick={() => copyToClipboard(suggestion.text)}>
+              Copy to Clipboard
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

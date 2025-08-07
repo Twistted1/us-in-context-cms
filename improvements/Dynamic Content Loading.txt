@@ -1,0 +1,23 @@
+// Add API integration for dynamic content
+const useContentStrategies = () => {
+  const [strategies, setStrategies] = useState({});
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchStrategies = async () => {
+      try {
+        const response = await fetch('/api/strategies');
+        const data = await response.json();
+        setStrategies(data);
+      } catch (error) {
+        console.error('Failed to fetch strategies:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchStrategies();
+  }, []);
+  
+  return { strategies, loading };
+};

@@ -1,0 +1,26 @@
+// Add version control for content strategies
+const ContentVersionControl = ({ strategyId, currentVersion }) => {
+  const [versions, setVersions] = useState([]);
+  
+  const saveVersion = useCallback(() => {
+    const newVersion = {
+      id: Date.now(),
+      timestamp: new Date().toISOString(),
+      content: currentContent
+    };
+    setVersions(prev => [...prev, newVersion]);
+  }, [currentContent]);
+  
+  return (
+    <div className="version-control">
+      <button onClick={saveVersion}>Save Version</button>
+      <select onChange={(e) => loadVersion(e.target.value)}>
+        {versions.map(v => (
+          <option key={v.id} value={v.id}>
+            Version {v.id} - {new Date(v.timestamp).toLocaleString()}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};

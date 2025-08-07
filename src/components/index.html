@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Us In Context - Final Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 
+        Chosen Palette: Refined Monochrome
+        - Primary Text: #111827 (Almost Black)
+        - Secondary Text: #6B7280 (Medium Gray)
+        - Accent/Borders: #E5E7EB (Light Gray)
+        - Background: #FFFFFF (White)
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #111827;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Source Serif 4', serif;
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .article-card, .tier-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .article-card:hover, .tier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.07);
+        }
+        .article-card img {
+            transition: transform 0.3s;
+        }
+        .article-card:hover img {
+            transform: scale(1.05);
+        }
+        .social-icon {
+            transition: color 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER & NAVIGATION -->
+    <header id="navbar" class="bg-white/95 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3">
+                <svg class="w-10 h-10" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21.5 13.5C23.9853 13.5 26 11.4853 26 9C26 6.51472 23.9853 4.5 21.5 4.5C19.0147 4.5 17 6.51472 17 9C17 11.4853 19.0147 13.5 21.5 13.5Z" fill="#A9B4C2"/>
+                    <path d="M26.6667 35.5C29.4286 35.5 31.6667 30.3741 31.6667 24C31.6667 17.6259 29.4286 12.5 26.6667 12.5C23.9048 12.5 21.6667 17.6259 21.6667 24C21.6667 30.3741 23.9048 35.5 26.6667 35.5Z" fill="#2E3A48"/>
+                    <path d="M16.3333 35.5C19.0952 35.5 21.3333 30.3741 21.3333 24C21.3333 17.6259 19.0952 12.5 16.3333 12.5C13.5714 12.5 11.3333 17.6259 11.3333 24C11.3333 30.3741 13.5714 35.5 16.3333 35.5Z" fill="#A9B4C2" fill-opacity="0.8"/>
+                </svg>
+                <div class="flex flex-col justify-center">
+                    <div class="text-xl font-bold text-gray-900 tracking-wide leading-tight">Us In Context</div>
+                    <div class="text-[10px] text-gray-500 tracking-widest leading-tight">CONNECTING PERSPECTIVES</div>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link text-gray-500 hover:text-black">About</a>
+                <a href="#latest" class="nav-link text-gray-500 hover:text-black">Latest Articles</a>
+                <a href="#premium" class="nav-link text-gray-500 hover:text-black font-medium">Premium</a>
+                <a href="#contact" class="nav-link text-gray-500 hover:text-black">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200">
+            <a href="#about" class="block py-3 px-6 text-sm hover:bg-gray-50">About</a>
+            <a href="#latest" class="block py-3 px-6 text-sm hover:bg-gray-50">Latest Articles</a>
+            <a href="#premium" class="block py-3 px-6 text-sm hover:bg-gray-50 font-medium">Premium</a>
+            <a href="#contact" class="block py-3 px-6 text-sm hover:bg-gray-50">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-section bg-black py-24 md:py-40 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight max-w-4xl mx-auto">Insightful Analysis for the Engaged Citizen.</h1>
+                <p class="text-lg md:text-xl text-gray-300 mt-6 max-w-2xl mx-auto">We move beyond the headlines to explore the underlying systems shaping our society with clarity and realism.</p>
+                <a href="#premium" class="mt-8 inline-block bg-white text-black font-semibold px-8 py-3 rounded-md hover:bg-gray-200 transition-colors">Go Premium</a>
+            </div>
+        </section>
+
+        <!-- LATEST ARTICLES SECTION -->
+        <section id="latest" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Latest Analysis</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <a href="#" class="article-card block bg-white rounded-lg overflow-hidden border border-gray-200">
+                        <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1503252947299-4193b6d69526?q=80&w=1920&auto=format&fit=crop" alt="Industrial smokestacks" class="w-full h-48 object-cover"></div>
+                        <div class="p-6">
+                            <p class="text-sm font-semibold text-blue-600 mb-2">ECONOMIC COMMENTARY</p>
+                            <h3 class="text-xl font-bold mb-3 font-serif">The Hidden Costs of Unchecked Corporate Power</h3>
+                            <p class="text-gray-600">An examination of how profit-driven strategies impact society beyond the balance sheet.</p>
+                        </div>
+                    </a>
+                    <a href="#" class="article-card block bg-white rounded-lg overflow-hidden border border-gray-200">
+                         <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1528642474498-1af5a7220263?q=80&w=1920&auto=format&fit=crop" alt="Government building" class="w-full h-48 object-cover"></div>
+                        <div class="p-6">
+                            <p class="text-sm font-semibold text-red-600 mb-2">POLITICAL INSIGHTS</p>
+                            <h3 class="text-xl font-bold mb-3 font-serif">The Erosion of Democratic Norms</h3>
+                            <p class="text-gray-600">Delving into the subtle and overt shifts threatening the foundations of governance.</p>
+                        </div>
+                    </a>
+                    <a href="#" class="article-card block bg-white rounded-lg overflow-hidden border border-gray-200">
+                         <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=1920&auto=format&fit=crop" alt="Forest landscape" class="w-full h-48 object-cover"></div>
+                        <div class="p-6">
+                            <p class="text-sm font-semibold text-green-600 mb-2">SOCIAL RESPONSIBILITY</p>
+                            <h3 class="text-xl font-bold mb-3 font-serif">Corporate Accountability in Climate Action</h3>
+                            <p class="text-gray-600">Who is truly responsible for protecting our planet, and who is prioritizing profit?</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREMIUM SECTION -->
+        <section id="premium" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Go Premium. Get Deeper Insights.</h2>
+                <p class="text-gray-600 mb-12 max-w-2xl mx-auto">Support independent analysis and unlock exclusive content, in-depth reports, and direct access to our research.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <!-- Pricing Tiers... -->
+                    <div class="tier-card border border-gray-200 rounded-lg p-8">
+                        <h3 class="text-xl font-bold mb-2">Supporter</h3>
+                        <p class="text-4xl font-bold mb-4">£5<span class="text-lg font-medium text-gray-500">/month</span></p>
+                        <ul class="text-left space-y-3 text-gray-600 mb-8">
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Access to all articles</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Supporter newsletter</li>
+                        </ul>
+                        <a href="#" class="w-full inline-block bg-gray-200 text-gray-800 font-semibold px-6 py-3 rounded-md hover:bg-gray-300 transition-colors">Choose Supporter</a>
+                    </div>
+                    <div class="tier-card border-2 border-blue-600 rounded-lg p-8 relative">
+                        <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</div>
+                        <h3 class="text-xl font-bold mb-2">Premium</h3>
+                        <p class="text-4xl font-bold mb-4">£10<span class="text-lg font-medium text-gray-500">/month</span></p>
+                        <ul class="text-left space-y-3 text-gray-600 mb-8">
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Everything in Supporter</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Exclusive in-depth reports</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Access to data sets</li>
+                        </ul>
+                        <a href="#" class="w-full inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">Choose Premium</a>
+                    </div>
+                    <div class="tier-card border border-gray-200 rounded-lg p-8">
+                        <h3 class="text-xl font-bold mb-2">Partner</h3>
+                        <p class="text-4xl font-bold mb-4">£25<span class="text-lg font-medium text-gray-500">/month</span></p>
+                        <ul class="text-left space-y-3 text-gray-600 mb-8">
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Everything in Premium</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Monthly Q&A sessions</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Early access to content</li>
+                        </ul>
+                        <a href="#" class="w-full inline-block bg-gray-200 text-gray-800 font-semibold px-6 py-3 rounded-md hover:bg-gray-300 transition-colors">Choose Partner</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">About Us In Context</h2>
+                <div class="max-w-3xl mx-auto text-lg text-gray-600 space-y-4">
+                    <p>People deserve more than just headlines. Us In Context was founded to provide the full story, challenging conventional narratives and exposing the complexities of pressing issues.</p>
+                    <p>Our mission is to inform, provoke thought, and foster discussion by shining a light on the injustices and abuses of power impacting individuals and society.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-6">
+                 <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Stay Informed.</h2>
+                        <p class="text-gray-600 mb-8 text-lg">Subscribe to our newsletter for the latest public insights, or reach out for partnerships and inquiries.</p>
+                        <div class="space-y-4 text-gray-700">
+                            <p class="flex items-center"><svg class="w-5 h-5 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>contact@usincontext.com</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md border">
+                        <form>
+                             <div class="mb-5">
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
+                                <input type="email" id="email" class="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="your.email@example.com">
+                            </div>
+                            <button type="submit" class="w-full bg-black text-white font-semibold px-5 py-3 rounded-lg hover:bg-gray-800 transition-colors">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-10">
+            <div class="text-center">
+                <h3 class="font-semibold text-gray-800 mb-4">Connect With Us</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.youtube.com/@usincontext" target="_blank" rel="noopener noreferrer" title="YouTube" class="social-icon text-gray-500 hover:text-[#FF0000]">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22.96.26 1.47.05.87.06 1.74.06 2.62s0 1.75-.06 2.62c-.04.51-.13 1-.26 1.47-.25.9-.83 1.48-1.73 1.73-.47.13-.96.22-1.47.26-.87.05-1.74.06-2.62.06s-1.75 0-2.62-.06c-.51-.04-1-.13-1.47-.26-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-.96-.26-1.47-.05-.87-.06-1.74-.06-2.62s0-1.75.06-2.62c.04-.51.13-1 .26-1.47.25-.9.83-1.48 1.73-1.73.47-.13.96-.22 1.47-.26.87-.05 1.74-.06 2.62-.06s1.75 0 2.62.06c.51.04 1 .13 1.47.26.9.25 1.48.83 1.73 1.73z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/usincontext" target="_blank" rel="noopener noreferrer" title="Instagram" class="social-icon text-gray-500 hover:text-pink-600">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@usincontext" target="_blank" rel="noopener noreferrer" title="TikTok" class="social-icon text-gray-500 hover:text-black">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.53.02C13.84.01 15.14 0 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.43.05-4.84-.95-6.43-2.8-1.59-1.87-2.36-4.36-2.02-6.77.22-1.55.63-3.09 1.36-4.44.73-1.35 1.74-2.56 2.99-3.56.83-.68 1.74-1.24 2.65-1.74.9-.49 1.82-.9 2.7-1.32v3.34c-.95.5-1.9 1-2.85 1.5-1.06.57-2.08 1.2-3.04 1.94-1.2 1-2.1 2.27-2.7 3.73-.42 1-1.04 2.4-1.18 3.85-.03.36-.05.72-.05 1.09 0 .7.08 1.39.24 2.08.52 2.2 2.16 4.03 4.2 4.9 2.04.87 4.32.94 6.4.24 2.08-.7 3.72-2.2 4.6-4.1.3-.64.5-1.3.6-1.98.02-.18.03-.36.04-.54v-8.7c-2.1-.2-4.1-.9-5.7-2.2-1.6-1.3-2.6-3.3-2.8-5.3-.1-1 .2-2 .8-2.8.1-.1.2-.2.3-.3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
+                <p class="mb-2">&copy; 2025 Us In Context. All Rights Reserved.</p>
+                <div class="space-x-4">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">Partnerships & Consulting</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html

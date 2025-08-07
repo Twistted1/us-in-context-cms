@@ -1,0 +1,38 @@
+// Add calendar view for content scheduling
+const ContentCalendar = ({ strategies, completedTasks }) => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  
+  const getTasksForDate = (date) => {
+    const dayOfMonth = date.getDate();
+    const weekOfMonth = Math.ceil(dayOfMonth / 7);
+    
+    return Object.entries(strategies).flatMap(([platform, content]) => {
+      return Object.entries(content).map(([key, item]) => {
+        const week = parseInt(key.match(/week(\d+)/)?.[1] || 0);
+        const day = parseInt(key.match(/day(\d+)/)?.[1] || 0);
+        
+        if (week === weekOfMonth && day === dayOfMonth) {
+          return {
+            id: `${platform}-${key}`,
+            platform,
+            content: item,
+            completed: completedTasks.includes(`${platform}-${key}`)
+          };
+        }
+        return null;
+      }).filter(Boolean);
+    });
+  };
+  
+  return (
+    <div className="content-calendar">
+      <Calendar
+        localizer={localizer}
+        events={getEventsForMonth(currentDate)}
+        startAccessor="start"
+        endAccessor="end"
+        style={{ height: 500 }}
+      />
+    </div>
+  );
+};

@@ -1,0 +1,67 @@
+// Add content approval workflow
+const ContentApproval = ({ contentId, content }) => {
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState('');
+  const [status, setStatus] = useState('draft');
+  
+  const addComment = useCallback(() => {
+    if (!newComment.trim()) return;
+    
+    const comment = {
+      id: Date.now(),
+      text: newComment,
+      author: 'Current User',
+      timestamp: new Date().toISOString()
+    };
+    
+    setComments(prev => [...prev, comment]);
+    setNewComment('');
+  }, [newComment]);
+  
+  const approveContent = useCallback(() => {
+    setStatus('approved');
+    // Trigger publishing workflow
+  }, []);
+  
+  return (
+    <div className="content-approval">
+      <div className="approval-header">
+        <h3>Content Approval</h3>
+        <span className={`status ${status}`}>{status}</span>
+      </div>
+      
+      <div className="comments-section">
+        <h4>Comments</h4>
+        <div className="comments-list">
+          {comments.map(comment => (
+            <div key={comment.id} className="comment">
+              <div className="comment-header">
+                <strong>{comment.author}</strong>
+                <span>{new Date(comment.timestamp).toLocaleString()}</span>
+              </div>
+              <p>{comment.text}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div className="add-comment">
+          <textarea
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder="Add a comment..."
+          />
+          <button onClick={addComment}>Add Comment</button>
+        </div>
+      </div>
+      
+      <div className="approval-actions">
+        <button onClick={() => setStatus('rejected')} className="reject">
+          Request Changes
+        </button>
+        <button onClick={approveContent} className="approve">
+          Approve & Publish
+        </button>
+      </div>
+    </div>
+  );
+};

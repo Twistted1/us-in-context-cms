@@ -1,0 +1,15 @@
+// Consider implementing Context API for complex state
+const ContentContext = React.createContext();
+
+const ContentProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(contentReducer, initialState);
+  
+  return (
+    <ContentContext.Provider value={{ state, dispatch }}>
+      {children}
+    </ContentContext.Provider>
+  );
+};
+
+// Usage in components
+const { state, dispatch } = useContext(ContentContext);

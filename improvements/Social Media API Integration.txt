@@ -1,0 +1,47 @@
+// Add direct posting to social platforms
+const SocialMediaIntegration = () => {
+  const [connectedAccounts, setConnectedAccounts] = useState({});
+  
+  const connectAccount = useCallback(async (platform) => {
+    try {
+      // OAuth flow implementation
+      const authUrl = getAuthUrl(platform);
+      window.location.href = authUrl;
+    } catch (error) {
+      console.error('Failed to connect account:', error);
+    }
+  }, []);
+  
+  const postToPlatform = useCallback(async (platform, content) => {
+    try {
+      const response = await fetch(`/api/post/${platform}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content })
+      });
+      
+      return await response.json();
+    } catch (error) {
+      console.error('Failed to post:', error);
+      throw error;
+    }
+  }, []);
+  
+  return (
+    <div className="social-media-integration">
+      <h3>Connected Accounts</h3>
+      <div className="accounts-grid">
+        {['twitter', 'instagram', 'tiktok', 'linkedin'].map(platform => (
+          <div key={platform} className="account-card">
+            <h4>{platform}</h4>
+            {connectedAccounts[platform] ? (
+              <button className="disconnect">Disconnect</button>
+            ) : (
+              <button onClick={() => connectAccount(platform)}>Connect</button>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

@@ -1,0 +1,8 @@
+// Implement React.memo for expensive components
+const ExpensiveComponent = React.memo(({ data }) => {
+  // Component logic
+});
+
+// Add lazy loading for route-based code splitting
+const renderXTwitter = React.lazy(() => import('./renderXTwitter'));
+const renderInstagram = React.lazy(() => import('./renderInstagram'));

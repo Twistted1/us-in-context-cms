@@ -1,0 +1,43 @@
+// Add actual performance tracking for published content
+const ContentEffectiveness = () => {
+  const [contentMetrics, setContentMetrics] = useState({});
+  
+  const trackContentPerformance = useCallback((contentId, metrics) => {
+    setContentMetrics(prev => ({
+      ...prev,
+      [contentId]: {
+        ...prev[contentId],
+        ...metrics,
+        lastUpdated: new Date().toISOString()
+      }
+    }));
+  }, []);
+  
+  return (
+    <div className="content-effectiveness">
+      <h3>Content Performance</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Content</th>
+            <th>Platform</th>
+            <th>Engagement</th>
+            <th>Reach</th>
+            <th>Conversion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(contentMetrics).map(([id, metrics]) => (
+            <tr key={id}>
+              <td>{id}</td>
+              <td>{metrics.platform}</td>
+              <td>{metrics.engagement}</td>
+              <td>{metrics.reach}</td>
+              <td>{metrics.conversionRate}%</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
