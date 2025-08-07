@@ -83,10 +83,17 @@ const UsInContextCMS = () => {
     localStorage.setItem('usInContextProgress', JSON.stringify(progress));
   }, [completedXTasks, completedInstagramTasks, completedTikTokTasks, completedLinkedInTasks]);
 
+    // Platform content state
+  const [youtubeContent, setYoutubeContent] = useState({ ... });
+  const [facebookContent, setFacebookContent] = useState({ ... });
+  const [websiteContent, setWebsiteContent] = useState({ ... });
+  const [linkedinContent, setLinkedinContent] = useState({ ... });
+
   const showToast = useCallback((message) => {
     setToast({ message, isVisible: true });
     setTimeout(() => setToast({ message: '', isVisible: false }), 3000);
   }, []);
+
 
   // Toggle functions
   const toggleXTask = useCallback((taskId) => {
