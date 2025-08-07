@@ -1221,7 +1221,12 @@ const UsInContextCMS = () => {
           </div>
         </div>
       </nav>
-      
+      {/* DEBUG block */}
+      <div className="p-4 bg-yellow-100 border border-yellow-500 text-yellow-800">
+         <h2>DEBUG: YouTube Week Focus</h2>
+         <p>{youtubeContent?.week1?.focus}</p>
+      </div>
+
       <main className="max-w-7xl mx-auto px-4 py-6">
         {activeTab === 'overview' && renderOverview()}
         {activeTab === 'xtwitter' && renderXTwitter()}
